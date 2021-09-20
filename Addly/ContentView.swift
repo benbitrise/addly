@@ -12,7 +12,7 @@ struct ContentView: View {
     @ObservedObject var operand2 = NumbersOnly()
     var result: String {
         guard let operand1Value = Int(operand1.value), let operand2Value = Int(operand2.value) else {
-            return "Error"
+            return "askdlfjhalskdjfhalksjdf"
         }
         let sum = operand1Value + operand2Value
         let asStr = String(sum)
