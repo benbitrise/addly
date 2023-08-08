@@ -25,7 +25,6 @@ struct ContentView: View {
             return "error"
         }
     }
-}
 
     var body: some View {
         Color.init(red: (249/256), green: (242/256), blue: (214/256)).ignoresSafeArea().overlay(
