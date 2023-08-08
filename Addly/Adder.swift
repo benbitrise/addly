@@ -14,6 +14,7 @@ enum AddingStatus: Equatable {
     case error
 }
 
+
 struct Adder {
 
     let intervalMaker: IntervalMaker
