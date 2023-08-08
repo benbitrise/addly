@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 enum AddingStatus: Equatable {
     case nothingToAdd
     case adding
