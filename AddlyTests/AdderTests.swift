@@ -11,7 +11,7 @@ import XCTest
 class AdderTests: XCTestCase {
 
     func testAdder_happyPath() {
-        executeAddingTest(operand1: "1", operand2: "2", expected: .added("3"))
+        executeAddingTest(operand1: "1", operand2: "3", expected: .added("3"))
     }
 
     func testAdder_onlyOneArg() {
