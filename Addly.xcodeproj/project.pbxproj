@@ -13,6 +13,8 @@
 		AF40A0AD26AF4497001FF0AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF40A0AC26AF4497001FF0AE /* Preview Assets.xcassets */; };
 		AF40A0C326AF4497001FF0AE /* AddlyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF40A0C226AF4497001FF0AE /* AddlyUITests.swift */; };
 		AF40A0D126AF4EBC001FF0AE /* NumbersOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF40A0D026AF4EBC001FF0AE /* NumbersOnly.swift */; };
+		AF41C8072B211CC5007D161B /* AvailabilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF41C8062B211CC5007D161B /* AvailabilityTests.swift */; };
+		AF41C8092B211D12007D161B /* Availability.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF41C8082B211D12007D161B /* Availability.swift */; };
 		AF825C5228BEB52E005F0578 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = AF825C5128BEB52E005F0578 /* Lottie */; };
 		AF825C5428BEE50C005F0578 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF825C5328BEE50C005F0578 /* LottieView.swift */; };
 		AF825C5A28BEEB3A005F0578 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = AF825C5828BEE976005F0578 /* loading.json */; };
@@ -52,6 +54,8 @@
 		AF40A0C226AF4497001FF0AE /* AddlyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddlyUITests.swift; sourceTree = "<group>"; };
 		AF40A0C426AF4497001FF0AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF40A0D026AF4EBC001FF0AE /* NumbersOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersOnly.swift; sourceTree = "<group>"; };
+		AF41C8062B211CC5007D161B /* AvailabilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityTests.swift; sourceTree = "<group>"; };
+		AF41C8082B211D12007D161B /* Availability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Availability.swift; sourceTree = "<group>"; };
 		AF825C5328BEE50C005F0578 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		AF825C5828BEE976005F0578 /* loading.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = loading.json; path = Addly/animations/loading.json; sourceTree = SOURCE_ROOT; };
 		AF825C5B28BEEDBF005F0578 /* Adder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adder.swift; sourceTree = "<group>"; };
@@ -124,6 +128,7 @@
 				AF40A0D026AF4EBC001FF0AE /* NumbersOnly.swift */,
 				AF825C5328BEE50C005F0578 /* LottieView.swift */,
 				AF825C5B28BEEDBF005F0578 /* Adder.swift */,
+				AF41C8082B211D12007D161B /* Availability.swift */,
 				AF825C5F28BFB50A005F0578 /* IntervalMaker.swift */,
 			);
 			path = Addly;
@@ -143,6 +148,7 @@
 				AF40A0B926AF4497001FF0AE /* Info.plist */,
 				AF825C6128BFB5EA005F0578 /* AdderTests.swift */,
 				AF825C6328BFB65F005F0578 /* ZeroIntervalMaker.swift */,
+				AF41C8062B211CC5007D161B /* AvailabilityTests.swift */,
 			);
 			path = AddlyTests;
 			sourceTree = "<group>";
@@ -301,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF41C8092B211D12007D161B /* Availability.swift in Sources */,
 				AF40A0A826AF4495001FF0AE /* ContentView.swift in Sources */,
 				AF40A0D126AF4EBC001FF0AE /* NumbersOnly.swift in Sources */,
 				AF825C5C28BEEDBF005F0578 /* Adder.swift in Sources */,
@@ -315,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF825C6228BFB5EA005F0578 /* AdderTests.swift in Sources */,
+				AF41C8072B211CC5007D161B /* AvailabilityTests.swift in Sources */,
 				AF825C6428BFB65F005F0578 /* ZeroIntervalMaker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,9 +472,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"Addly/Preview Content\"";
-				DEVELOPMENT_TEAM = 72SA8V3WYL;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Addly/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -476,6 +484,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitrise.Addly;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -486,9 +495,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"Addly/Preview Content\"";
-				DEVELOPMENT_TEAM = 72SA8V3WYL;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Addly/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -498,6 +507,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitrise.Addly;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
