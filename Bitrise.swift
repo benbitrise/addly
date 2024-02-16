@@ -2,6 +2,95 @@
 
 import BitriseDescription
 
+let buildForTestingWorkflow = Workflow.workflow("build_for_testing",
+                                                steps: [
+                                                    .step(
+                                                        identifier: "activate-ssh-key",
+                                                        majorVersion: 4
+                                                    ),
+                                                    .step(
+                                                        identifier: "git-clone",
+                                                        majorVersion: 8
+                                                    ),
+                                                    .step(
+                                                        identifier: "xcode-build-for-test",
+                                                        majorVersion: 2,
+                                                        inputs: [
+                                                            .input(
+                                                                key: "destination",
+                                                                value: "generic/platform=iOS Simulator"
+                                                            )
+                                                        ]
+                                                    ),
+                                                    .step(
+                                                        identifier: "share-pipeline-variable",
+                                                        majorVersion: 1,
+                                                        runIf: ".IsCI",
+                                                        inputs: [
+                                                            .input(
+                                                                key: "variables",
+                                                                value: "TEST_BUNDLE_ZIP_PATH=$BITRISE_TEST_BUNDLE_ZIP_PATH"
+                                                            )
+                                                        ]
+                                                    ),
+                                                    
+                                                        .step(
+                                                            identifier: "deploy-to-bitrise-io",
+                                                            majorVersion: 2,
+                                                            inputs: [
+                                                                .input(
+                                                                    key: "pipeline_intermediate_files",
+                                                                    value: "$BITRISE_TEST_BUNDLE_PATH:BITRISE_TEST_BUNDLE_PATH"
+                                                                )
+                                                            ]
+                                                        )
+                                                ]
+)
+
+func makeTestWithoutBuildingWorkflow(
+    for testPlan: String
+) -> Workflow {
+    return .workflow(
+        "run_tests_with_plan\(testPlan)",
+        steps: [
+            .step(
+                identifier: "pull-intermediate-files",
+                majorVersion: 1,
+                inputs: [
+                    .input(
+                        key: "artifact_sources",
+                        value: "*.*"
+                    )
+                ]
+            ),
+            .step(
+                identifier: "xcode-test-without-building",
+                majorVersion: 0,
+                inputs: [
+                    .input(
+                        key: "xctestrun",
+                        value: "$BITRISE_TEST_BUNDLE_PATH/Addly_\(testPlan)_iphonesimulator16.4-arm64-x86_64.xctestrun"
+                    ),
+                    .input(
+                        key: "destination",
+                        value: "platform=iOS Simulator,name=iPhone 12 Pro Max"
+                    ),
+                ]
+            ),
+            .step(
+                identifier: "deploy-to-bitrise-io",
+                majorVersion: 2,
+                inputs: [
+                    .input(
+                        key: "pipeline_intermediate_files",
+                        value: "$BITRISE_XCRESULT_PATH:BITRISE_\(testPlan.uppercased())_XCRESULT_PATH"
+                    )
+                ]
+            )
+        ]
+    )
+}
+
 let testUnitTestWorkflow = makeTestWithoutBuildingWorkflow(for: "UnitTest")
 let testUITestWorkflow = makeTestWithoutBuildingWorkflow(for: "UITest")
 let buildForTesting = Stage.stage(
@@ -51,94 +140,4 @@ let bitrise = Bitrise(
         testUITestWorkflow,
         testUnitTestWorkflow
     ]
-)
-
-func makeTestWithoutBuildingWorkflow(
-    for testPlan: String
-) -> Workflow {
-    return .workflow(
-        "run_tests_with_plan\(testPlan)",
-        steps: [
-            .step(
-                identifier: "pull-intermediate-files",
-                majorVersion: 1,
-                inputs: [
-                    .input(
-                        key: "artifact_sources",
-                        value: "*.*"
-                    )
-                ]
-            ),
-            .step(
-                identifier: "xcode-test-without-building",
-                majorVersion: 0,
-                inputs: [
-                    .input(
-                        key: "xctestrun",
-                        value: "$BITRISE_TEST_BUNDLE_PATH/Addly_\(testPlan)_iphonesimulator16.4-arm64-x86_64.xctestrun"
-                    ),
-                    .input(
-                        key: "destination",
-                        value: "platform=iOS Simulator,name=iPhone 12 Pro Max"
-                    ),
-                ]
-            ),
-            .step(
-                identifier: "deploy-to-bitrise-io",
-                majorVersion: 2,
-                inputs: [
-                    .input(
-                        key: "pipeline_intermediate_files",
-                        value: "$BITRISE_XCRESULT_PATH:BITRISE_\(testPlan.uppercased())_XCRESULT_PATH"
-                    )
-                ]
-            )
-        ]
-    )
-}
-
-
-let buildForTestingWorkflow = Workflow.workflow("build_for_testing",
-                                                steps: [
-                                                    .step(
-                                                        identifier: "activate-ssh-key",
-                                                        majorVersion: 4
-                                                    ),
-                                                    .step(
-                                                        identifier: "git-clone",
-                                                        majorVersion: 8
-                                                    ),
-                                                    .step(
-                                                        identifier: "xcode-build-for-test",
-                                                        majorVersion: 2,
-                                                        inputs: [
-                                                            .input(
-                                                                key: "destination",
-                                                                value: "generic/platform=iOS Simulator"
-                                                            )
-                                                        ]
-                                                    ),
-                                                    .step(
-                                                        identifier: "share-pipeline-variable",
-                                                        majorVersion: 1,
-                                                        runIf: ".IsCI",
-                                                        inputs: [
-                                                            .input(
-                                                                key: "variables",
-                                                                value: "TEST_BUNDLE_ZIP_PATH=$BITRISE_TEST_BUNDLE_ZIP_PATH"
-                                                            )
-                                                        ]
-                                                    ),
-                                                    
-                                                        .step(
-                                                            identifier: "deploy-to-bitrise-io",
-                                                            majorVersion: 2,
-                                                            inputs: [
-                                                                .input(
-                                                                    key: "pipeline_intermediate_files",
-                                                                    value: "$BITRISE_TEST_BUNDLE_PATH:BITRISE_TEST_BUNDLE_PATH"
-                                                                )
-                                                            ]
-                                                        )
-                                                ]
 )
