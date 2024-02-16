@@ -3,6 +3,37 @@
 format_version: "13"
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 project_type: ios
+app:
+  title: Addly
+  summary: Simple iOS app to demo Bitrise capabilities
+  description: Simple iOS app to demo Bitrise capabilities
+  envs:
+  - BITRISE_SCHEME: Addly
+    opts:
+      is_expand: true
+      skip_if_empty: false
+      title: ""
+      description: ""
+      summary: ""
+      category: ""
+      is_required: false
+      is_dont_change_value: false
+      is_template: false
+      is_sensitive: false
+      unset: false
+  - BITRISE_PROJECT_PATH: Addly.xcodeproj
+    opts:
+      is_expand: true
+      skip_if_empty: false
+      title: ""
+      description: ""
+      summary: ""
+      category: ""
+      is_required: false
+      is_dont_change_value: false
+      is_template: false
+      is_sensitive: false
+      unset: false
 meta:
   bitrise.io:
     machine_type_id: g2-m1.8core

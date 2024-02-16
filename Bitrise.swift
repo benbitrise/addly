@@ -124,6 +124,15 @@ let bitrise = Bitrise(
         stack: .xcode_15_2_x,
         machine: .m1_large
     ),
+    app: .app(
+        title: "Addly",
+        summary: "Simple iOS app to demo Bitrise capabilities",
+        description: "Simple iOS app to demo Bitrise capabilities",
+        envs: [
+            .env(key: "BITRISE_SCHEME", value: "Addly"),
+            .env(key: "BITRISE_PROJECT_PATH", value: "Addly.xcodeproj")
+        ]
+    ),
     triggerMap: [
         .triggerMap(
             target: .pipeline(pipelineBen),
