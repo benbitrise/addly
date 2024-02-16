@@ -76,7 +76,7 @@ workflows:
     steps:
     - pull-intermediate-files@1:
         inputs:
-        - artifact_sources: '*.*'
+        - artifact_sources: .*
           opts: {}
     - xcode-test-without-building@0:
         inputs:
@@ -92,7 +92,7 @@ workflows:
     steps:
     - pull-intermediate-files@1:
         inputs:
-        - artifact_sources: '*.*'
+        - artifact_sources: .*
           opts: {}
     - xcode-test-without-building@0:
         inputs:

@@ -59,7 +59,7 @@ func makeTestWithoutBuildingWorkflow(
                 inputs: [
                     .input(
                         key: "artifact_sources",
-                        value: "*.*"
+                        value: ".*"
                     )
                 ]
             ),
