@@ -69,7 +69,7 @@ func makeTestWithoutBuildingWorkflow(
                 inputs: [
                     .input(
                         key: "xctestrun",
-                        value: "$BITRISE_TEST_BUNDLE_PATH/Addly_\(testPlan)_iphonesimulator16.4-arm64-x86_64.xctestrun"
+                        value: "$BITRISE_TEST_BUNDLE_PATH/Addly_\(testPlan)_iphonesimulator17.2-arm64-x86_64.xctestrun"
                     ),
                     .input(
                         key: "destination",

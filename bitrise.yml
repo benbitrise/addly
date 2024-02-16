@@ -81,7 +81,7 @@ workflows:
     - xcode-test-without-building@0:
         inputs:
         - opts: {}
-          xctestrun: $BITRISE_TEST_BUNDLE_PATH/Addly_UITest_iphonesimulator16.4-arm64-x86_64.xctestrun
+          xctestrun: $BITRISE_TEST_BUNDLE_PATH/Addly_UITest_iphonesimulator17.2-arm64-x86_64.xctestrun
         - destination: platform=iOS Simulator,name=iPhone 12 Pro Max
           opts: {}
     - deploy-to-bitrise-io@2:
@@ -97,7 +97,7 @@ workflows:
     - xcode-test-without-building@0:
         inputs:
         - opts: {}
-          xctestrun: $BITRISE_TEST_BUNDLE_PATH/Addly_UnitTest_iphonesimulator16.4-arm64-x86_64.xctestrun
+          xctestrun: $BITRISE_TEST_BUNDLE_PATH/Addly_UnitTest_iphonesimulator17.2-arm64-x86_64.xctestrun
         - destination: platform=iOS Simulator,name=iPhone 12 Pro Max
           opts: {}
     - deploy-to-bitrise-io@2:
