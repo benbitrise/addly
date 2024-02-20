@@ -227,3 +227,6 @@ let bitrise = Bitrise(
         testUnitTestWorkflow
     ] + buildMarketWorkflows
 )
+
+
+// swiftlint:enable all
