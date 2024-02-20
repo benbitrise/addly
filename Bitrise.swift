@@ -2,6 +2,16 @@
 
 import BitriseDescription
 
+func makeAnnouncementScript(for market: String) -> String {
+    return """
+    echo \"Creating IPA for \(market)\"
+    """
+}
+
+let markets = ["usa", "canada", "mexico"]
+
+// Defining workflows
+
 let buildForTestingWorkflow = Workflow.workflow("build_for_testing",
                                                 steps: [
                                                     .step(
@@ -91,8 +101,60 @@ func makeTestWithoutBuildingWorkflow(
     )
 }
 
+func makeIPAWorkflow(
+    for market: String
+) -> Workflow {
+    return .workflow(
+        "build_\(market)",
+        steps: [
+            .step(
+                identifier: "activate-ssh-key",
+                majorVersion: 4
+            ),
+            .step(
+                identifier: "git-clone",
+                majorVersion: 8
+            ),
+            .step(
+                identifier: "script",
+                majorVersion: 1,
+                inputs: [
+                    .input(
+                        key: "content",
+                        value: makeAnnouncementScript(for: market)
+                    )
+                ]
+            ),
+            .step(
+                identifier: "xcode-archive",
+                majorVersion: 0,
+                inputs: [
+                    .input(
+                        key: "scheme",
+                        value: "aedemo"
+                    ),
+                    .input(
+                        key: "automatic_code_signing",
+                        value: "api-key"
+                    ),
+                ]
+            ),
+            .step(
+                identifier: "deploy-to-bitrise-io",
+                majorVersion: 2
+            )
+        ]
+    )
+}
+
 let testUnitTestWorkflow = makeTestWithoutBuildingWorkflow(for: "UnitTest")
 let testUITestWorkflow = makeTestWithoutBuildingWorkflow(for: "UITest")
+let buildMarketWorkflows = markets.map { market in
+    return makeIPAWorkflow(for: market)
+}
+
+// Defining stages
+
 let buildForTesting = Stage.stage(
     "build_for_testing",
     workflows: [.workflow(buildForTestingWorkflow)]
@@ -105,6 +167,15 @@ let testWithoutBuilding = Stage.stage(
     ]
 )
 
+let buildMarkets = Stage.stage(
+    "build_markets",
+    workflows: buildMarketWorkflows.map({ workflow in
+        return .workflow(workflow)
+    })
+)
+
+// Defining the pipeline
+
 let pipelineBen = Pipeline.pipeline(
     "bens_pipeline",
     stages: [
@@ -113,9 +184,12 @@ let pipelineBen = Pipeline.pipeline(
         ),
         .stage(
             testWithoutBuilding
-        )
+        ),
+        .stage(buildMarkets)
     ]
 )
+
+// Defining the app
 
 let bitrise = Bitrise(
     formatVersion: .v13,
@@ -142,11 +216,12 @@ let bitrise = Bitrise(
     pipelines: [pipelineBen],
     stages: [
         buildForTesting,
-        testWithoutBuilding
+        testWithoutBuilding,
+        buildMarkets
     ],
     workflows: [
         buildForTestingWorkflow,
         testUITestWorkflow,
         testUnitTestWorkflow
-    ]
+    ] + buildMarketWorkflows
 )

@@ -46,15 +46,36 @@ pipelines:
     stages:
     - build_for_testing: {}
     - test_without_building: {}
+    - build_markets: {}
 stages:
   build_for_testing:
     workflows:
     - build_for_testing: {}
+  build_markets:
+    workflows:
+    - build_usa: {}
+    - build_canada: {}
+    - build_mexico: {}
   test_without_building:
     workflows:
     - run_tests_with_planUITest: {}
     - run_tests_with_planUnitTest: {}
 workflows:
+  build_canada:
+    steps:
+    - activate-ssh-key@4: {}
+    - git-clone@8: {}
+    - script@1:
+        inputs:
+        - content: echo "Creating IPA for canada"
+          opts: {}
+    - xcode-archive@0:
+        inputs:
+        - opts: {}
+          scheme: aedemo
+        - automatic_code_signing: api-key
+          opts: {}
+    - deploy-to-bitrise-io@2: {}
   build_for_testing:
     steps:
     - activate-ssh-key@4: {}
@@ -72,6 +93,36 @@ workflows:
         inputs:
         - opts: {}
           pipeline_intermediate_files: $BITRISE_TEST_BUNDLE_PATH:BITRISE_TEST_BUNDLE_PATH
+  build_mexico:
+    steps:
+    - activate-ssh-key@4: {}
+    - git-clone@8: {}
+    - script@1:
+        inputs:
+        - content: echo "Creating IPA for mexico"
+          opts: {}
+    - xcode-archive@0:
+        inputs:
+        - opts: {}
+          scheme: aedemo
+        - automatic_code_signing: api-key
+          opts: {}
+    - deploy-to-bitrise-io@2: {}
+  build_usa:
+    steps:
+    - activate-ssh-key@4: {}
+    - git-clone@8: {}
+    - script@1:
+        inputs:
+        - content: echo "Creating IPA for usa"
+          opts: {}
+    - xcode-archive@0:
+        inputs:
+        - opts: {}
+          scheme: aedemo
+        - automatic_code_signing: api-key
+          opts: {}
+    - deploy-to-bitrise-io@2: {}
   run_tests_with_planUITest:
     steps:
     - pull-intermediate-files@1:
