@@ -20,7 +20,7 @@ class AddlyUITests: XCTestCase {
         operand1.typeText("11")
         operand2.tap()
         operand2.typeText("22")
-        validateResultAsync(result: result, expectedValue: "34")
+        validateResultAsync(result: result, expectedValue: "33")
     }
 
     func testAddingOneOperand() throws {
