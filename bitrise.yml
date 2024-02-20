@@ -69,7 +69,7 @@ workflows:
         inputs:
         - content: echo "Creating IPA for canada"
           opts: {}
-    - xcode-archive@0:
+    - xcode-archive@5:
         inputs:
         - opts: {}
           scheme: aedemo
@@ -101,7 +101,7 @@ workflows:
         inputs:
         - content: echo "Creating IPA for mexico"
           opts: {}
-    - xcode-archive@0:
+    - xcode-archive@5:
         inputs:
         - opts: {}
           scheme: aedemo
@@ -116,7 +116,7 @@ workflows:
         inputs:
         - content: echo "Creating IPA for usa"
           opts: {}
-    - xcode-archive@0:
+    - xcode-archive@5:
         inputs:
         - opts: {}
           scheme: aedemo

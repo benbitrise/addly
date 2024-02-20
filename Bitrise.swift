@@ -127,7 +127,7 @@ func makeIPAWorkflow(
             ),
             .step(
                 identifier: "xcode-archive",
-                majorVersion: 0,
+                majorVersion: 5,
                 inputs: [
                     .input(
                         key: "scheme",
