@@ -1,5 +1,7 @@
 // BitriseDescription: 0.0.1
 
+// swiftlint:disable all
+
 import BitriseDescription
 
 func makeAnnouncementScript(for market: String) -> String {
