@@ -1,1 +1,4 @@
 .bitrise/
+fastlane/report.xml
+Addly.app.dSYM.zip
+Addly.ipa
