@@ -18,7 +18,8 @@ default_platform(:ios)
 platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
-    increment_build_number(xcodeproj: "Addly.xcodeproj")
-    build_app(scheme: "Addly", export_method: "development")
+    setup_ci if ENV['CI']
+    match(type: 'development', readonly: true)
+    build_app(scheme: "Addly", export_method: "development", configuration: "Debug")
   end
 end
