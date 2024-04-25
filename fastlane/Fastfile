@@ -19,7 +19,7 @@ platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
     setup_ci if ENV['CI']
-    match(type: 'development', readonly: true,  git_private_key: ENV['MATCH_DEPLOY_KEY'])
+    match(type: 'development', readonly: true, keychain_name: "login.keychain-db", git_private_key: ENV['MATCH_DEPLOY_KEY'])
     build_app(scheme: "Addly", export_method: "development", configuration: "Debug")
   end
 end
