@@ -20,6 +20,6 @@ platform :ios do
   lane :beta do
     setup_ci if ENV['CI']
     match(type: 'development', readonly: true, keychain_name: "login.keychain-db", git_private_key: ENV['MATCH_DEPLOY_KEY'])
-    build_app(scheme: "Addly", export_method: "development", configuration: "Debug")
+    build_app(scheme: "Addly", export_method: "development", configuration: "Debug", build_timing_summary: true)
   end
 end
