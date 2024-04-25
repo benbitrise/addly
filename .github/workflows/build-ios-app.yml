@@ -2,12 +2,17 @@ name: build-ios-app
 on:
   push:
     branches:
-      - 'main'
+      - 'bb/fastlane'
 jobs:
   build:
     runs-on: macos-latest
     steps:
+      - uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.MATCH_DEPLOY_KEY }}
       - uses: actions/checkout@v2
-      - run: fastlane beta
-        env:
-          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+      - run: fastlane ios beta
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Addly.ipa
+          path: Addly.ipa
