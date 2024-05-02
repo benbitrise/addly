@@ -24,10 +24,12 @@ jobs:
         run: echo "ARTIFACT_ID=${{ steps.upload_artifact.outputs.artifact-id }}" >> $GITHUB_ENV
         id: set_artifact_id
       - run: echo $ARTIFACT_ID
+        env:
+          ARTIFACT_ID: ${{ env.ARTIFACT_ID }}
       - name: Trigger Bitrise Build
         run: |
-          curl -X POST "https://api.bitrise.io/v0.1/apps/${BITRISE_APP_SLUG}/builds" \
-          -H "Authorization: ${BITRISE_ACCESS_TOKEN}" \
+          curl -X POST "https://api.bitrise.io/v0.1/apps/${{ secrets.BITRISE_APP_SLUG }}/builds" \
+          -H "Authorization: ${{ secrets.BITRISE_ACCESS_TOKEN }}" \
           -H "Content-Type: application/json" \
           -d '{
                 "hook_info": {
