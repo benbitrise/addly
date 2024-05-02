@@ -17,12 +17,10 @@ jobs:
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
           DEVELOPER_DIR: /Applications/Xcode_15.3.app/Contents/Developer
       - uses: actions/upload-artifact@v4
+        id: artifact-upload-step
         with:
           name: Addly.ipa
           path: Addly.ipa
-      - name: Set Artifact ID
-        run: echo "ARTIFACT_ID=${{ steps.upload_artifact.outputs.artifact-id }}" >> $GITHUB_ENV
-        id: set_artifact_id
       - run:  echo 'Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}'
       - name: Trigger Bitrise Build
         run: |
