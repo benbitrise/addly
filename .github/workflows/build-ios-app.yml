@@ -23,9 +23,7 @@ jobs:
       - name: Set Artifact ID
         run: echo "ARTIFACT_ID=${{ steps.upload_artifact.outputs.artifact-id }}" >> $GITHUB_ENV
         id: set_artifact_id
-      - run: echo $ARTIFACT_ID
-        env:
-          ARTIFACT_ID: ${{ env.ARTIFACT_ID }}
+      - run:  echo 'Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}'
       - name: Trigger Bitrise Build
         run: |
           curl -X POST "https://api.bitrise.io/v0.1/apps/${{ secrets.BITRISE_APP_SLUG }}/builds" \
@@ -39,11 +37,9 @@ jobs:
                     "environments": [
                         {
                             "mapped_to": "ARTIFACT_ID",
-                            "value": "$ARTIFACT_ID",
+                            "value": "${{ steps.artifact-upload-step.outputs.artifact-id }}",
                             "is_expand": true
                         }
                     ]
                 }
               }'
-        env:
-          ARTIFACT_ID: ${{ env.ARTIFACT_ID }}
