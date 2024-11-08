@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-# a comment
+# another comment
 
 @main
 struct AddlyApp: App {
