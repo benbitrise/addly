@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+# another comment
+
 @main
 struct AddlyApp: App {
     var body: some Scene {
