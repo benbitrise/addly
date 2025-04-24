@@ -10,7 +10,7 @@ import Foundation
 enum AddingStatus: Equatable {
     case nothingToAdd
     case adding
-    case added(String)
+    case added(String)sdsdsdd
     case error
 }
 
