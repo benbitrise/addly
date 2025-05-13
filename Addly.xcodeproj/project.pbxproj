@@ -121,7 +121,7 @@
 		AF40A09926AF4495001FF0AE = {
 			isa = PBXGroup;
 			children = (
-				AFCD88EA2DD3BC360046AC33 /* bla */,
+				AFCD88EA2DD3BC360046AC33 /* bla2 */,
 				AF8ECC28295CE0B900E6E9E1 /* aedemo-Info.plist */,
 				AF8ECC26295CCFD200E6E9E1 /* Media.xcassets */,
 				AF40A0A426AF4495001FF0AE /* Addly */,
@@ -205,7 +205,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		AFCD88EA2DD3BC360046AC33 /* bla */ = {
+		AFCD88EA2DD3BC360046AC33 /* bla2 */ = {
 			isa = PBXGroup;
 			children = (
 				AF9826172B802135008A6B81 /* FlakyTest.xctestplan */,
@@ -213,7 +213,7 @@
 				AFFB30D12AE82A5D00893EDC /* UnitTest.xctestplan */,
 				AFFB30D22AE82AC200893EDC /* FailingUnit.xctestplan */,
 			);
-			path = bla;
+			path = bla2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
