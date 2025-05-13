@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -72,17 +72,17 @@
 		AF825C5F28BFB50A005F0578 /* IntervalMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalMaker.swift; sourceTree = "<group>"; };
 		AF825C6128BFB5EA005F0578 /* AdderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdderTests.swift; sourceTree = "<group>"; };
 		AF825C6328BFB65F005F0578 /* ZeroIntervalMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroIntervalMaker.swift; sourceTree = "<group>"; };
+		AF825C6628C16026005F0578 /* UITest.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = UITest.xctestplan; sourceTree = "<group>"; };
 		AF8ECC26295CCFD200E6E9E1 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		AF8ECC28295CE0B900E6E9E1 /* aedemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "aedemo-Info.plist"; sourceTree = "<group>"; };
 		AF919EBB2B85257800795FAA /* FailingAddlyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailingAddlyUITests.swift; sourceTree = "<group>"; };
 		AF92EC752952735900E47CFA /* aedemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aedemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF9826172B802135008A6B81 /* FlakyTest.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = FlakyTest.xctestplan; sourceTree = "<group>"; };
 		AF9826182B802156008A6B81 /* FlakyAdderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlakyAdderTests.swift; sourceTree = "<group>"; };
 		AFEDB5D92B7589F800E8521F /* FailingAdderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailingAdderTests.swift; sourceTree = "<group>"; };
+		AFFB30D12AE82A5D00893EDC /* UnitTest.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = UnitTest.xctestplan; sourceTree = "<group>"; };
+		AFFB30D22AE82AC200893EDC /* FailingUnit.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = FailingUnit.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		AFCD88E92DD3BAF60046AC33 /* bla */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = bla; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		AF40A09F26AF4495001FF0AE /* Frameworks */ = {
@@ -121,7 +121,7 @@
 		AF40A09926AF4495001FF0AE = {
 			isa = PBXGroup;
 			children = (
-				AFCD88E92DD3BAF60046AC33 /* bla */,
+				AFCD88EA2DD3BC360046AC33 /* bla */,
 				AF8ECC28295CE0B900E6E9E1 /* aedemo-Info.plist */,
 				AF8ECC26295CCFD200E6E9E1 /* Media.xcassets */,
 				AF40A0A426AF4495001FF0AE /* Addly */,
@@ -203,6 +203,17 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AFCD88EA2DD3BC360046AC33 /* bla */ = {
+			isa = PBXGroup;
+			children = (
+				AF9826172B802135008A6B81 /* FlakyTest.xctestplan */,
+				AF825C6628C16026005F0578 /* UITest.xctestplan */,
+				AFFB30D12AE82A5D00893EDC /* UnitTest.xctestplan */,
+				AFFB30D22AE82AC200893EDC /* FailingUnit.xctestplan */,
+			);
+			path = bla;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
