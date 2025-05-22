@@ -1,3 +1,3 @@
- README for Addly
+### README for Addly
 A demo project for Bitrise
 
