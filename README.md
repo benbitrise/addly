@@ -1,6 +1,3 @@
 # README for Addly
 A demo project for Bitrise
-
-
-sdsdkj
-
+sdfl
