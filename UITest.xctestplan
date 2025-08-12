@@ -9,6 +9,7 @@
     }
   ],
   "defaultOptions" : {
+    "preferredScreenCaptureFormat" : "screenshot",
     "testTimeoutsEnabled" : true
   },
   "testTargets" : [
