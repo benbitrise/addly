@@ -17,7 +17,13 @@ final class FailingAddlyUITests: XCTestCase {
         let operand2 = app.textFields["operand2"]
         let result = app.staticTexts["result"]
         operand1.tap()
-        operand1.typeText("11")
+        operand1.typeText("1")
+        operand1.typeText("2")
+        operand1.typeText("3")
+        operand1.typeText("4")
+        operand1.typeText("5")
+        operand1.typeText("6")
+        operand1.typeText("7")
         operand2.tap()
         operand2.typeText("22")
         validateResultAsync(result: result, expectedValue: "333")
