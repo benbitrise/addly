@@ -26,4 +26,4 @@ workflows:
             xcrun simctl list
     meta:
       bitrise.io:
-        stack: osx-minimal
+        stack: osx-xcode-15.3.x
