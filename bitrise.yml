@@ -27,3 +27,6 @@ workflows:
     meta:
       bitrise.io:
         stack: osx-minimal
+    triggers:
+      push:
+      - branch: "*"
